@@ -22,8 +22,14 @@ consumer = KafkaConsumer(
     enable_auto_commit=True,
 )
 
-# Webhook URL
-webhook_url = 'https://your-webhook-url.example.com/hook'
+# Webhook settings
+webhook_url = 'https://aap-25-demos-aap-25.apps.hammer-sno.arsalan.io/eda-event-streams/api/eda/v1/external_event_stream/518c3565-891b-4623-b27d-4eadf30a11f3/post/'
+auth_token = 'AA1BB2CC3ZZ9YY8XX7'
+
+headers = {
+    'Authorization': f'Bearer {auth_token}',
+    'Content-Type': 'application/json',
+}
 
 for message in consumer:
     print(f"Received message: {message.value}")
@@ -37,9 +43,10 @@ for message in consumer:
             "value": message.value.decode('utf-8'),
         }
 
-        response = requests.post(webhook_url, json=payload)
+        response = requests.post(webhook_url, json=payload, headers=headers)
         response.raise_for_status()
 
         print(f"Webhook called successfully: {response.status_code}")
     except Exception as e:
         print(f"Failed to call webhook: {e}")
+

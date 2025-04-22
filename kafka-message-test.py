@@ -15,5 +15,5 @@ producer = KafkaProducer(
     ssl_context=ssl_context,
 )
 
-producer.send('aap-filtering', b'job_id: 123')
+producer.send('aap-filtering', b'job_id: 55')
 producer.flush()

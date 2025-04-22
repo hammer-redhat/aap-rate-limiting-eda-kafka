@@ -1,0 +1,24 @@
+---
+- name: Monitor Kafka queue
+  hosts: all
+  sources:
+    - ansible.eda.kafka:
+        host: "hammer-kafka-kafka-tls-bootstrap-kafka-eda.apps.hammer-sno.arsalan.io"
+        port: "443"
+        check_hostname: true
+        verify_mode: "CERT_REQUIRED"
+        encoding: "utf-8"
+        topic: "aap-filtering"
+        group_id: "my-group"
+        offset: "earliest"
+        security_protocol: "SSL"
+        certfile: ../certs/client.crt 
+        keyfile: ../certs/client.key
+        cafile: ../certs/ca.crt
+
+  rules:
+    - name: Forward job_id and execute playbook. 
+      condition: event.payload.job_id is defined
+      action:
+        run_playbook:
+          name: "test.yml"
