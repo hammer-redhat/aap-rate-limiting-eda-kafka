@@ -1,2 +1,5 @@
 certs/
 rulebooks/venv/
+rulebooks/requirements.txt
+rulebooks/inventory
+rulebooks/ansible-navigator.log
