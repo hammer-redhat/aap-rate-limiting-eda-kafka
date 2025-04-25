@@ -10,4 +10,5 @@
       condition: event.payload.job_id is defined
       action:
         run_job_template:
-          name: "Test"
+          name: "test"
+          organization: "Default"
