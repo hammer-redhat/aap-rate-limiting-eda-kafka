@@ -12,9 +12,9 @@
         group_id: "my-group"
         offset: "earliest"
         security_protocol: "SSL"
-        certfile: ../certs/client.crt 
-        keyfile: ../certs/client.key
-        cafile: ../certs/ca.crt
+        certfile: /etc/pki/my-custom-certs/client.crt 
+        keyfile: /etc/pki/my-custom-certs/client.key
+        cafile: /etc/pki/my-custom-certs/ca.crt
 
   rules:
     - name: Forward job_id and execute playbook. 
