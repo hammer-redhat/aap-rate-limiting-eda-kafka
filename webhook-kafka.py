@@ -24,7 +24,7 @@ consumer = KafkaConsumer(
 
 # Webhook settings
 webhook_url = 'https://aap-25-demos-aap-25.apps.hammer-sno.arsalan.io/eda-event-streams/api/eda/v1/external_event_stream/518c3565-891b-4623-b27d-4eadf30a11f3/post/'
-auth_token = 'AA1BB2CC3ZZ9YY8XX7'     # not a real secret
+auth_token = 'AA1BB2CC3ZZ9YY8XX7'     # notsecret
 
 headers = {
     'Authorization': f'Bearer {auth_token}',
