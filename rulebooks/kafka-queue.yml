@@ -20,5 +20,5 @@
     - name: Forward job_id and execute playbook. 
       condition: event.payload.job_id is defined
       action:
-        run_playbook:
-          name: "test.yml"
+        run_job_template:
+          name: "Test"
