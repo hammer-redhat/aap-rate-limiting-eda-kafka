@@ -2,19 +2,8 @@
 - name: Monitor Kafka queue
   hosts: all
   sources:
-    - ansible.eda.kafka:
-        host: "hammer-kafka-kafka-tls-bootstrap-kafka-eda.apps.hammer-sno.arsalan.io"
-        port: "443"
-        check_hostname: true
-        verify_mode: "CERT_REQUIRED"
-        encoding: "utf-8"
-        topic: "aap-filtering"
-        group_id: "my-group"
-        offset: "earliest"
-        security_protocol: "SSL"
-        certfile: /etc/pki/my-custom-certs/client.crt 
-        keyfile: /etc/pki/my-custom-certs/client.key
-        cafile: /etc/pki/my-custom-certs/ca.crt
+    - name: AAP 2.5 Event Stream
+      ansible.eda.webhook:
 
   rules:
     - name: Forward job_id and execute playbook. 
